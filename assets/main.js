@@ -3,7 +3,7 @@ const main = document.getElementById("main");
 
 if(!localStorage.getItem("raiting")){
     let items = [];
-    items.push({film:"The Godfather", rating:0}, {film:"The dark knight", rating:0}, {film:"12 angry man", rating:0});
+    items.push({film:"The Godfather", rating:"0"}, {film:"The dark knight", rating:"0"}, {film:"12 angry man", rating:"0"});
     saveState(items);
    // buildPage(items);
 }
@@ -85,6 +85,12 @@ star.addEventListener('click', function(e){
                 localStorage.setItem("raiting", serialObj);
             }
         }
+
+        //getState();
+        items.sort(compareRating);
+        saveState(items); 
+        //saveState(items);
+        console.log(items,"after"); 
         deleteStar(film, old_rating);
         for(let i = 1; i<=rating; i++){
             let star = document.getElementById(`${film}-${i}`);
@@ -106,8 +112,8 @@ function deleteStar (item, old_rating){
         star.classList.remove("star-rating__input_checked");
     }
 }
-function compareRating(film, film) {
-    return film.rating - film.rating;
+function compareRating(film1, film2) {
+    return film2.rating - film1.rating;
   }
 
 const add = document.getElementById("add_button");
