@@ -59,6 +59,10 @@
     justify-content: space-between;
     padding: 0px 10px;
 }
+.film-iteam div {
+	width: 225px;
+	overflow: hidden;
+}
  .add {
     display: flex;
     height: 40px;
