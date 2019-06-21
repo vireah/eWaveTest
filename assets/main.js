@@ -147,7 +147,7 @@ function getUniqueValue() {
 }
 function getExistValue() {
     if(!value){
-        alert( "Please, enter a movie name in the input field");
+        alert( "Please, enter a movie name in the input field ");
     } else return true;
 
 }   
