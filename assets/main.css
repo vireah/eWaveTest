@@ -23,8 +23,7 @@
 	display: none;
 }
 .star-rating__ico:hover:before,
-.star-rating__ico:hover ~ .star-rating__ico:before,
-.star-rating__input:checked ~ .star-rating__ico:before
+.star-rating__ico:hover ~ .star-rating__ico:before
 {
     content: "\f005";
 	color: #FFB300;
@@ -60,6 +59,10 @@
     justify-content: space-between;
     padding: 0px 10px;
 }
+.film-iteam p {
+	width: 225px;
+	overflow: hidden;
+}
  .add {
     display: flex;
     height: 40px;
@@ -86,4 +89,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.fa-star-o:before {
+    content: "\f005";
 }

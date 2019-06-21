@@ -1,22 +1,16 @@
-
 const main = document.getElementById("main");
 
 if(!localStorage.getItem("raiting")){
     let items = [];
-    items.push({film:"The Godfather", rating:"0"}, {film:"The dark knight", rating:"0"}, {film:"12 angry man", rating:"0"});
+    items.push({film:"The Godfather (1972)", rating:"0"}, {film:"The Shawshank Redemption (1994)", rating:"0"}, {film:"The Dark knight (2008)", rating:"0"},{film:"12 Angry Men (1957)", rating:"0"}, {film:"Shindlers List (1993)", rating:"0"}, {film:"The Lord of the Rings: The Fellowship of the Ring (2001)", rating:"0"});
     saveState(items);
-   // buildPage(items);
 }
 
 buildPage();
 
 function saveState(items) {
-    //alert(items);
     var serialObj = JSON.stringify(items);
     localStorage.setItem("raiting", serialObj);
-    //var returnObj = JSON.parse(localStorage.getItem("raiting"));
-    //items = returnObj;
-    //buildPage(items);
 }
 
 function getState(){
@@ -30,11 +24,10 @@ function buildPage(items){
     for(let i = 0; i < items.length; i++) {
         const item = items[i].film;
         const rating = items[i].rating;
-        
-        //console.log(item,rating);
         createItem(item,rating); 
     }
 }
+
 function createItem(item,rating) {
     const film_box = document.createElement('div');
     film_box.classList.add('item');  
@@ -60,19 +53,13 @@ function createItem(item,rating) {
         `;
         for(let i = 1; i<=rating; i++){
             let star = document.getElementById(`${item}-${i}`);
-          //  console.log(star);
             star.classList.add('star-rating__input_checked');  
         }
-        //searchButton.classList.add()  
-
 }
 
 const star = document.getElementById("main");
 star.addEventListener('click', function(e){
     if(e.target.type === "radio"){
-        console.log(e.target.value);
-        console.log(e.target.name);
-
         const film = e.target.name;
         const rating = e.target.value;
         let  old_rating; 
@@ -80,36 +67,22 @@ star.addEventListener('click', function(e){
             if(items[i].film === film){
                 old_rating = items[i].rating;
                 items[i].rating = rating;
-                
                 var serialObj = JSON.stringify(items);
                 localStorage.setItem("raiting", serialObj);
             }
         }
-
-        //getState();
         items.sort(compareRating);
-        saveState(items); 
-        //saveState(items);
-        console.log(items,"after"); 
+        saveState(items);
         deleteStar(film, old_rating);
         for(let i = 1; i<=rating; i++){
             let star = document.getElementById(`${film}-${i}`);
-            //console.log(star);
             star.classList.add('star-rating__input_checked');  
         }
-        //const a = document.getElementById("main");
-        console.log(main.childNodes, "main");
         while (main.firstChild) {
             main.removeChild(main.firstChild);
         }
-        buildPage(items);
-        console.log(items);
-       
+        buildPage(items);  
     }
-    
- //   console.log(e.target);
-    //console.log(item);
-
 }, true);
 
 function deleteStar (item, old_rating){
@@ -118,6 +91,7 @@ function deleteStar (item, old_rating){
         star.classList.remove("star-rating__input_checked");
     }
 }
+
 function compareRating(film1, film2) {
     if (film2.rating != film1.rating) {
         return film2.rating - film1.rating;
@@ -133,13 +107,11 @@ const add = document.getElementById("add_button");
 
 add.addEventListener('click', function(e){
     const value = document.getElementById("add_value").value;
-    console.log(items.every(elem => elem.film  != value));
     if(getExistValue() && getUniqueValue()){
-        //const new_item = e.target.value;
         items.push({film: value, rating:0});
         saveState(items);
         createItem(value,0);
-    } //else alert( "Please, enter a movie name in the input field");
+    }
 function getUniqueValue() {
     if(!items.every(elem => elem.film  != value)){
     alert("This movie has already been added")}
@@ -147,8 +119,8 @@ function getUniqueValue() {
 }
 function getExistValue() {
     if(!value){
-        alert( "Please, enter a movie name in the input field");
+        alert( "Please, enter a movie name in the input field ");
     } else return true;
 
-}   
+}
 }, true);
