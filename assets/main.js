@@ -68,7 +68,7 @@ function createItem(item,rating) {
 }
 
 const star = document.getElementById("main");
-star.addEventListener('click', setTimeout(function(e){
+star.addEventListener('click', function(e){
     if(e.target.type === "radio"){
         console.log(e.target.value);
         console.log(e.target.name);
@@ -110,7 +110,7 @@ star.addEventListener('click', setTimeout(function(e){
  //   console.log(e.target);
     //console.log(item);
 
-}, 500), true);
+}, true);
 
 function deleteStar (item, old_rating){
     for(let i = 1; i<=old_rating; i++){
