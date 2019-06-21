@@ -122,5 +122,6 @@ function getExistValue() {
         alert( "Please, enter a movie name in the input field ");
     } else return true;
 
-}   
+}  
+value = ""; 
 }, true);
