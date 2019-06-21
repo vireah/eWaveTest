@@ -11,7 +11,7 @@ if(!localStorage.getItem("raiting")){
 buildPage();
 
 function saveState(items) {
-    alert(items);
+    //alert(items);
     var serialObj = JSON.stringify(items);
     localStorage.setItem("raiting", serialObj);
     //var returnObj = JSON.parse(localStorage.getItem("raiting"));
@@ -97,6 +97,12 @@ star.addEventListener('click', function(e){
             //console.log(star);
             star.classList.add('star-rating__input_checked');  
         }
+        //const a = document.getElementById("main");
+        console.log(main.childNodes, "main");
+        while (main.firstChild) {
+            main.removeChild(main.firstChild);
+        }
+        buildPage(items);
         console.log(items);
        
     }
@@ -113,8 +119,15 @@ function deleteStar (item, old_rating){
     }
 }
 function compareRating(film1, film2) {
-    return film2.rating - film1.rating;
-  }
+    if (film2.rating != film1.rating) {
+        return film2.rating - film1.rating;
+
+    } else if (film2.film.toLowerCase() < film1.film.toLowerCase()) {
+        return 1;
+        } else if (film2.film.toLowerCase() > film1.film.toLowerCase()) {
+            return -1;
+            } else return 0;
+}
 
 const add = document.getElementById("add_button");
 

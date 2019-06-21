@@ -81,6 +81,8 @@
     border-radius: 4px;
 }
 .block_add {
+	margin: 0 auto;
+	width: 375px;
     display: flex;
     flex-direction: row;
     align-items: center;
