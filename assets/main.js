@@ -133,7 +133,22 @@ const add = document.getElementById("add_button");
 
 add.addEventListener('click', function(e){
     const value = document.getElementById("add_value").value;
-    //const new_item = e.target.value;
-    items.push({film: value, rating:0});
-    createItem(value,0);
+    console.log(items.every(elem => elem.film  != value));
+    if(getExistValue() && getUniqueValue()){
+        //const new_item = e.target.value;
+        items.push({film: value, rating:0});
+        saveState(items);
+        createItem(value,0);
+    } //else alert( "Please, enter a movie name in the input field");
+function getUniqueValue() {
+    if(!items.every(elem => elem.film  != value)){
+    alert("This movie has already been added")}
+    return items.every(elem => elem.film  != value);
+}
+function getExistValue() {
+    if(!value){
+        alert( "Please, enter a movie name in the input field");
+    } else return true;
+
+}   
 }, true);
