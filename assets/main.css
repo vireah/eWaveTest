@@ -59,7 +59,7 @@
     justify-content: space-between;
     padding: 0px 10px;
 }
-.film-iteam div:first-child {
+.film-iteam p {
 	width: 225px;
 	overflow: hidden;
 }
