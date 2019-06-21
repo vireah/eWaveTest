@@ -68,7 +68,7 @@ function createItem(item,rating) {
 }
 
 const star = document.getElementById("main");
-star.addEventListener('click', function(e){
+star.addEventListener('onmouseup', function(e){
     if(e.target.type === "radio"){
         console.log(e.target.value);
         console.log(e.target.name);
